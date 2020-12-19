@@ -26,7 +26,6 @@ public class Card : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        goodMatch = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -140,7 +139,7 @@ public class Card : MonoBehaviour
     //good Match
     public void success()
     {
-        //goodMatch.Play("GoodMatch");
+        goodMatch.SetTrigger("GoodMatch");
         Debug.Log("Now Playing");
     }
 }

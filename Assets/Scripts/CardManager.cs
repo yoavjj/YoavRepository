@@ -92,20 +92,23 @@ public class CardManager : MonoBehaviour
             yield break;
         }
         choosen = true;
-        yield return new WaitForSeconds(sneekPick);
 
         //No match
         if((choise1 != 0 && choise2 != 0) && (choise1 != choise2))
         {
             //flip back the open cards 
+            yield return new WaitForSeconds(sneekPick);
             FlipAllBack();
 
-            //reset the combo in scoremanager
+            //reset the combo in score  manager
             ScoreManager.instance.ResetCombos();
         }
         else if ((choise1 != 0 && choise2 != 0) && (choise1 == choise2))
         {
-            Card.instance.success();
+            foreach (var item in choosenCards)
+            {
+                item.GetComponent<Card>().success();
+            }
             lastMatchId = choise1;
             //Add score 
             ScoreManager.instance.AddScore(matchScore);
